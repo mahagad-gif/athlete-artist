@@ -31,6 +31,7 @@
   .sl{font-family:'Poppins';font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin:40px 0 6px;display:flex;align-items:center;gap:10px}
   .sl::after{content:"";flex:1;height:1px;background:var(--line)}
   .instr{font-size:14px;color:var(--ink-dim);margin-bottom:22px}
+  .framing{margin:0 0 22px;padding:15px 18px;background:#FFE8D8;border:1.5px solid var(--accent);border-radius:8px;font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.5}
   .fc{padding:22px 0;border-bottom:1px solid var(--line)}
   .fc .q{font-size:13px;color:var(--ink-faint);margin-bottom:14px}
   .fc-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
@@ -84,11 +85,11 @@
     <div class="eyebrow">Self-report · about 4 minutes</div>
     <h1><span class="a">A</span> <span class="s">/</span> <span class="r">B</span></h1>
     <p class="lede">Two orientations — two ways of being exceptional. There's no right answer and no better answer — every option here is a genuine strength. The point is to map <em>what you're like</em> and <em>what helps you do your best work</em>, so the people around you can build the right conditions for it.</p>
-    <div class="caveat"><strong>Answer for you, not for effect.</strong> Both sides of every question are good — picking the one that's actually true tells us more than the one that sounds impressive. This isn't a test, and it isn't used to make decisions about you.</div>
+    <div class="caveat"><strong>Answer for you, not for effect.</strong> Both sides of every question are good — picking the one that's actually true tells us more than the one that sounds impressive. This isn't a test, and it isn't used to make decisions about you. When you feel you're in the middle, dig deeper.</div>
   </header>
   <div id="quiz">
     <div class="sl">Part 1 · Which is more you?</div>
-    <p class="instr">Both statements describe good people. Pick how strongly you lean toward one or the other.</p>
+    <p class="framing">Both statements describe good people. Answer as your natural self — who you are outside talabat, before our culture and pace shape the answer. Which way do you genuinely lean?</p>
     <div id="fcItems"></div>
     <div class="sl">Part 2 · What brings out your best</div>
     <p class="instr">From the conditions below — all of them good — choose the <strong>four</strong> that most energise you and bring out your best work.</p>
@@ -139,7 +140,7 @@ const fcState=Array(PAIRS.length).fill(null);
 const picks=[];
 const fc=document.getElementById('fcItems');
 PAIRS.forEach((p,i)=>{const e=document.createElement('div');e.className='fc';
- e.innerHTML='<div class="q">Which is more you?</div><div class="fc-pair"><div class="stmt">'+p[0]+'</div><div class="stmt">'+p[1]+'</div></div><div class="fc-scale">'+SEGS.map((s,v)=>'<div class="seg '+s[1]+'" data-i="'+i+'" data-v="'+v+'">'+s[0]+'<br>'+(v<2?'left':'right')+'</div>').join('')+'</div>';
+ e.innerHTML='<div class="q">Outside talabat — which is more you?</div><div class="fc-pair"><div class="stmt">'+p[0]+'</div><div class="stmt">'+p[1]+'</div></div><div class="fc-scale">'+SEGS.map((s,v)=>'<div class="seg '+s[1]+'" data-i="'+i+'" data-v="'+v+'">'+s[0]+'<br>'+(v<2?'left':'right')+'</div>').join('')+'</div>';
  fc.appendChild(e);});
 fc.addEventListener('click',e=>{const o=e.target.closest('.seg');if(!o)return;
  const i=+o.dataset.i,v=+o.dataset.v;fcState[i]=v;
