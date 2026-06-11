@@ -140,7 +140,7 @@ const fcState=Array(PAIRS.length).fill(null);
 const picks=[];
 const fc=document.getElementById('fcItems');
 PAIRS.forEach((p,i)=>{const e=document.createElement('div');e.className='fc';
- e.innerHTML='<div class="q">Outside talabat — which is more you?</div><div class="fc-pair"><div class="stmt">'+p[0]+'</div><div class="stmt">'+p[1]+'</div></div><div class="fc-scale">'+SEGS.map((s,v)=>'<div class="seg '+s[1]+'" data-i="'+i+'" data-v="'+v+'">'+s[0]+'<br>'+(v<2?'left':'right')+'</div>').join('')+'</div>';
+ e.innerHTML='<div class="q">Which is more you?</div><div class="fc-pair"><div class="stmt">'+p[0]+'</div><div class="stmt">'+p[1]+'</div></div><div class="fc-scale">'+SEGS.map((s,v)=>'<div class="seg '+s[1]+'" data-i="'+i+'" data-v="'+v+'">'+s[0]+'<br>'+(v<2?'left':'right')+'</div>').join('')+'</div>';
  fc.appendChild(e);});
 fc.addEventListener('click',e=>{const o=e.target.closest('.seg');if(!o)return;
  const i=+o.dataset.i,v=+o.dataset.v;fcState[i]=v;
