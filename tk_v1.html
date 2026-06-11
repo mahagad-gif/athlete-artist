@@ -87,7 +87,7 @@
   .eblock:last-child{margin-bottom:0}
   .eblock .bh{font-family:'Poppins';font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:9px;display:flex;align-items:center;gap:7px}
   .eblock .bh .dot{width:7px;height:7px;border-radius:50%}
-  .bh.drive .dot{background:var(--ink-dim)} .bh.grow .dot{background:var(--grow)} .bh.wreck .dot{background:var(--warn)} .bh.shadow .dot{background:#6B21A8} .bh.inner .dot{background:var(--accent)}
+  .bh.drive .dot{background:var(--ink-dim)} .bh.grow .dot{background:var(--grow)} .bh.wreck .dot{background:var(--warn)} .bh.inner .dot{background:var(--accent)}
   .eblock.owns{background:var(--athlete-soft);border:1px solid var(--line);border-radius:9px;padding:14px 16px;margin-bottom:18px}
   .eblock.owns .bh{color:var(--athlete)}
   .eblock ul{list-style:none}
@@ -203,7 +203,7 @@
   <!-- ECOSYSTEM -->
   <div class="panel" id="panel-eco">
     <h2>What drives each profile — the inner work they own, and the ecosystem that lets it thrive</h2>
-    <p class="lead">This is the design brief, and it runs in two columns of accountability. Each profile has distinct <b>drivers</b> (Hogan MVPI), met through the three universal needs (SDT). <b>The person's part:</b> the self-awareness and self-development that keeps the strength from tipping into its shadow. <b>The company's part:</b> build the growth conditions, remove the wreckers, and actively balance the shadow. Neither side alone is enough.</p>
+    <p class="lead">This is the design brief, and it runs in two columns of accountability. Each profile has distinct <b>drivers</b> (Hogan MVPI), met through the three universal needs (SDT). <b>The person's part:</b> the self-awareness and self-development that keeps the strength from tipping into its shadow. <b>The company's part:</b> build the growth conditions and remove the wreckers. Neither side alone is enough.</p>
     <div class="eco-grid" id="ecoGrid"></div>
   </div>
 
@@ -237,14 +237,12 @@ const ECO={
     inner:["Notice the tell: when the goal shifts from beating the problem to beating people","Separate self-worth from the scoreboard \u2014 a lost round isn't a verdict on you","Build patience for slow, unscored work that won't show up on any leaderboard","Ask for feedback on substance, not just on whether you won","Check whether you're chasing mastery or chasing being seen"],
     grow:["Clear, ambitious, measurable goals; live scoreboards","Healthy internal competition and benchmarks","Fast cycles, quick decisions, room to move","Consequence tied to outcomes; recognition tied to results","Visible advancement paths"],
     wreck:["Vague or unmeasurable goals; no scoreboard","Effort and outcome decoupled; no consequence","Recognition by politics rather than results","Flat structure with nowhere to climb","Reward only for visible status, not mastery"],
-    needs:"Competence via winning · Autonomy over method · Relatedness through a team that competes together",
-    shadow:["Name wins explicitly: 'you beat the benchmark' not 'you're great' — keeps the drive anchored to mastery, not status","Run blameless post-mortems on failures: normalises learning from loss so defeat isn't existential","Rotate scoreboard metrics quarterly — prevents gaming a single metric as a proxy for worth","Pair competitive targets with explicit team-win moments: the Athlete shadow turns inward when there's nobody left to beat except colleagues","Install a 'how, not just what' norm in reviews: recognises the quality of the approach alongside the result","Make it safe to lose a round publicly — leaders model post-defeat analysis without self-flagellation"]},
+    needs:"Competence via winning · Autonomy over method · Relatedness through a team that competes together"},
  r:{drivers:["Problems worth caring about / meaning","Time and permission to explore","Autonomy over the work","High standards; quality recognised","Peers whose judgment they respect","A clear line to the end user"],
     inner:["Notice when the pursuit of quality tips into approval-seeking or fear of criticism","Practise \u201cgood enough to ship and iterate\u201d \u2014 done and improving beats perfect and stalled","Receive critique as information about the work, not an attack on you","Build the muscle of committing and finishing, not just refining","Decouple your worth from the work being flawless"],
     grow:["Exploration time; tolerance for a non-linear process","A Braintrust: high-calibre peers + honest, candid critique","Autonomy, protected from pure-volume pressure","Standards-led culture; quality recognised over throughput","Clear connection to meaning and users"],
     wreck:["Pure quota / throughput pressure; \u201cship it, who cares\u201d","Micromanagement; no thinking time","Careless or status-based critique","Low-calibre peers; work cut off from meaning","A judgment culture that makes critique feel like attack"],
-    needs:"Competence via genuine excellence · Autonomy over the work · Relatedness through respected peers",
-    shadow:["Set explicit shipping cadences that function as containers, not punishments — 'good enough to learn from' is the standard, not 'perfect'","Separate critique of the work from critique of the person: use Braintrust-style candour with clear psychological safety norms","Celebrate iteration and version numbers openly — signals that the first version is a start, not a verdict","Establish a 'ship + retrospect' ritual: launch, then hold a structured debrief so the Artist's quality drive has a legitimate post-ship outlet","Give public credit for finishing, not just for quality — balances the shadow that withholds completion waiting for perfection","Normalise 'I don't know yet' as a valid position in reviews: removes the ambient judgment pressure that triggers the approval-seeking shadow"]}
+    needs:"Competence via genuine excellence · Autonomy over the work · Relatedness through respected peers"}
 };
 function ecoCard(k,name){const e=ECO[k];
  return `<div class="ecard ${k}"><div class="eh">The ${name}</div><div class="eb">
@@ -252,7 +250,6 @@ function ecoCard(k,name){const e=ECO[k];
    <div class="eblock owns"><div class="bh inner"><span class="dot"></span>The person's part — inner work they own</div><ul>${e.inner.map(x=>`<li>${x}</li>`).join('')}</ul></div>
    <div class="eblock"><div class="bh grow"><span class="dot"></span>The company's part — ecosystem that grows them</div><ul>${e.grow.map(x=>`<li>${x}</li>`).join('')}</ul></div>
    <div class="eblock"><div class="bh wreck"><span class="dot"></span>Ecosystem that wrecks them</div><ul>${e.wreck.map(x=>`<li>${x}</li>`).join('')}</ul></div>
-   <div class="eblock"><div class="bh shadow"><span class="dot"></span>Ecosystem that balances their shadow</div><ul>${e.shadow.map(x=>`<li>${x}</li>`).join('')}</ul></div>
    <div class="needs">SDT needs, met through: ${e.needs}</div>
  </div></div>`;
 }
@@ -292,12 +289,10 @@ function recalc(){
   if(fit==='lo'){
    rx=`<h4 class="own">The person's part — inner work to do</h4><ul>${e.inner.map(x=>`<li>${x}</li>`).join('')}</ul>
        <h4 style="margin-top:16px">The company's part — supply these to move them up</h4><ul>${e.grow.map(x=>`<li>${x}</li>`).join('')}</ul>
-       <h4 style="margin-top:14px">…and remove these</h4><ul>${e.wreck.slice(0,3).map(x=>`<li>${x}</li>`).join('')}</ul>
-       <h4 style="margin-top:14px">Balance the shadow with</h4><ul>${e.shadow.slice(0,3).map(x=>`<li>${x}</li>`).join('')}</ul>`;
+       <h4 style="margin-top:14px">…and remove these</h4><ul>${e.wreck.slice(0,3).map(x=>`<li>${x}</li>`).join('')}</ul>`;
   } else {
    rx=`<h4 class="own">The person's part — stay self-aware</h4><ul>${e.inner.slice(0,2).map(x=>`<li>${x}</li>`).join('')}</ul>
-       <h4 style="margin-top:16px">The company's part — protect these</h4><ul>${e.grow.slice(0,3).map(x=>`<li>${x}</li>`).join('')}</ul>
-       <h4 style="margin-top:14px">Balance the shadow with</h4><ul>${e.shadow.slice(0,3).map(x=>`<li>${x}</li>`).join('')}</ul>`;
+       <h4 style="margin-top:16px">The company's part — protect these</h4><ul>${e.grow.slice(0,3).map(x=>`<li>${x}</li>`).join('')}</ul>`;
   }
  } else {
   rx=`<h4 class="own">Both sides, from both columns</h4><p style="font-size:13.5px;color:var(--ink-dim)">On the person: the inner work of both orientations — catch the win turning to status <em>and</em> catch quality turning to over-polishing. On the company: lead with the conditions of whichever orientation scores higher in their self-report; keep a thread of the other.</p>`;
